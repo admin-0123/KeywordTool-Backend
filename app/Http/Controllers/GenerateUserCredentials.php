@@ -341,8 +341,14 @@ class GenerateUserCredentials extends Controller
     curl_close($curl);
 
     $response = json_decode($response);
+    if ($response->result !== 'error') {
+      $res = $response->domain->domain_rating;
+    }
+    else {
+      $res = 0;
+    }
 
-    return $response->domain->domain_rating;
+    return $res;
   }
 
   public static function get_domain_age(Request $request)
