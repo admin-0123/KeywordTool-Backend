@@ -343,7 +343,8 @@ class GenerateUserCredentials extends Controller
     $response = json_decode($response);
     if (!$response->error) {
       $res = $response->domain->domain_rating;
-    } else {
+    }
+    else {
       $res = 0;
     }
 
@@ -375,8 +376,7 @@ class GenerateUserCredentials extends Controller
     curl_close($curl);
 
     $response = json_decode($response);
-    // if ($response->result !== 'error') {
-    if (!$response->error) {
+    if ($response->result !== 'error') {
       $create_date = strtotime($response->result->creation_date);
       $current_date = $_SERVER['REQUEST_TIME'];
 
@@ -389,7 +389,8 @@ class GenerateUserCredentials extends Controller
       $diff_months = (($year_to - $year_from) * 12) + ($month_to - $month_from);
 
       return $diff_months;
-    } else {
+    }
+    else {
       return 0;
     }
   }
